@@ -40,8 +40,8 @@ mp_pose = mp.solutions.pose
 pose = mp_pose.Pose()
 drawing = mp.solutions.drawing_utils
 
-im1 = cv2.imread('im1.png')
-im2 = cv2.imread('im2.png')
+im1 = cv2.imread('greenlight.png')
+im2 = cv2.imread('redlight.png')
 
 currWindow = im1
 
