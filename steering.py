@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import imutils
 from imutils.video import VideoStream
-from directkeys import PressKey, A, D, Space, ReleaseKey
+from directkeys import PressKey, A, D, W, Space, ReleaseKey
 
 cam = VideoStream(src=0).start()
 currentKey = list()
@@ -19,7 +19,7 @@ while True:
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     value = (11, 11)
     blurred = cv2.GaussianBlur(hsv, value,0)
-    colourLower = np.array([53, 55, 209])
+    colourLower = np.array([86,51,209])
     colourUpper = np.array([180,255,255])
 
     height = img.shape[0]
@@ -31,9 +31,12 @@ while True:
 
     upContour = mask[0:height//2,0:width]
     downContour = mask[3*height//4:height,2*width//5:3*width//5]
+    x=mask[0:width//2-35,0:width//2+35]
 
     cnts_up = cv2.findContours(upContour, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
     cnts_up = imutils.grab_contours(cnts_up)
+    cnts_x = cv2.findContours(x, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+    cnts_x = imutils.grab_contours(cnts_x)
 
 
     cnts_down = cv2.findContours(downContour, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
@@ -53,15 +56,25 @@ while True:
             PressKey(D)
             key = True
             currentKey.append(D)
+        #elif cX > (height//2 + 35):
+         #   PressKey(W)
+          #  key = True
+           # currentKey.append(W)
+       
             
-    
+
     if len(cnts_down) > 0:
-        PressKey(Space)
+        PressKey(Space)                                           
         key = True
         currentKey.append(Space)
     
     img = cv2.rectangle(img,(0,0),(width//2- 35,height//2 ),(0,255,0),1)
     cv2.putText(img,'LEFT',(110,30),cv2.FONT_HERSHEY_DUPLEX,1,(139,0,0))
+
+    img = cv2.rectangle(img,(0,0),(width//2- 35,height//2 ),(0,255,0),1)
+    cv2.putText(img,'UP',(310,30),cv2.FONT_HERSHEY_DUPLEX,1,(139,0,0))
+
+       
 
     img = cv2.rectangle(img,(width//2 + 35,0),(width-2,height//2 ),(0,255,0),1)
     cv2.putText(img,'RIGHT',(440,30),cv2.FONT_HERSHEY_DUPLEX,1,(139,0,0))
