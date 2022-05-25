@@ -4,7 +4,7 @@ import numpy as np
 import time
 from playsound import playsound
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(cv2::CAP_MSMF)
 cPos = 0
 startT = 0  
 endT = 0

@@ -28,7 +28,7 @@ height = 600
 
 screen = pygame.display.set_mode((width, height))
 mixer.init()
-mixer.music.load('C:\\Users\\AKSHAY K\\Desktop\hestiaproject\\__pycache__\\music.mp3')
+mixer.music.load("C:\\Users\\AKSHAY K\\Desktop\hestiaproject\\__pycache__\\music.mp3")
 mixer.music.play()
 
 # Set title to the window
@@ -37,7 +37,7 @@ mixer.music.play()
 
 #background_image = pygame.image.load("C:\\Users\\user\\Desktop\\Python\\my game\\_pycache_\\pic.jpg").convert()
 
-bg = pygame.image.load('C:\\Users\\AKSHAY K\\Desktop\\hestiaproject\\__pycache__\\pic.jpg').convert()
+bg = pygame.image.load("C:\\Users\\AKSHAY K\\Desktop\hestiaproject\\__pycache__\\pic.jpg").convert()
 bg = pygame.transform.scale(bg,(width,height))
 
 
@@ -114,8 +114,8 @@ class button():
 
 
 again = button(55, 200, 'Squid Game')   
-down = button(185, 340, 'Asphalt 9') 
 quit = button(325, 200, 'Subway Surfers')
+down = button(185, 340, 'Asphalt 9')
 #up = button(325, 350, 'Up')
 
 
